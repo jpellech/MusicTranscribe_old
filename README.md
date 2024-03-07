@@ -21,6 +21,8 @@ This would look like the following in your terminal:
 Then you can go to the webpage at the given IP address and upload your file there.
 
 **------Citations:------**
+aholman and Daudzarif created the front end of the user friendly webpage bundled in with MusicTranscribe.
+
 seperate_foreground_background() and  chroma_enhance() are by Brian McAfee from Librosa:
 Code source: Brian McFee
 License: ISC
