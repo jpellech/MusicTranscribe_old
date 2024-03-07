@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Music Transcriber</title>
+</head>
+<style>
+    body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+header {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 0;
+    text-align: center;
+}
+
+nav ul {
+    padding: 0;
+    list-style: none;
+    text-align: center;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 20px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: white;
+}
+
+main {
+    padding: 20px;
+    text-align: center;
+}
+
+main section {
+    margin-bottom: 20px;
+}
+
+button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    margin: 10px;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+.loader {
+        border: 5px solid #f3f3f3;
+        border-top: 5px solid #3498db;
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+        animation: spin 2s linear infinite;
+        margin: auto;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.loading-text {
+    color: #4CAF50;
+    font-size: 20px;
+    margin-top: 10px;
+}
+
+.hidden {
+    display: none;
+}
+</style>
+<body>
+    <header>
+        <h1>Music Transcriber</h1>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section id="home">
+            <h2>Welcome to Music Transcriber</h2>
+            <p>Music Transcriber converts ".wav," ".mp3," ".mp4," and ".flac" files into instrument-seperated midi and .wav files</p>
+            <!-- Placeholder for file upload button -->
+            <form action="/process_file" method="post" enctype="multipart/form-data" onsubmit="showProcessingMessage()">
+                <label for="fileInput" style="cursor: pointer;">
+                    <button type="button" onclick="uploadFile()" style="background-color: #4CAF50;">Upload Audio File</button>
+                    <span id="fileNameDisplay">No file chosen</span>
+                    <input type="file" id="fileInput" name="file" accept=".wav, .mp3, .mp4, .flac" style="display: none;" onchange="displayFileName()">
+                </label>
+                <!-- Placeholder for convert button -->
+                <button type="submit" style="background-color: #4CAF50;">Convert</button>
+            </form>
+        </section>
+        <section id="about">
+            <h2>About Us</h2>
+            <p>Learn more about Music Transcriber and how it works.</p>
+        </section>
+        <section id="contact">
+            <h2>Contact Us</h2>
+            <p>Get in touch with us for more information.</p>
+        </section>
+    </main>
+    <div id="loadingContainer" class="hidden">
+        <div class="loader"></div>
+        <div class="loading-text">Cooking in 1 minute</div>
+    </div>
+
+    <script>
+        function uploadFile() {
+            const fileInput = document.getElementById('fileInput');
+            fileInput.click();
+        }
+
+        function showProcessingMessage() {
+            document.getElementById('loadingContainer').classList.remove('hidden');
+            // Hide the loading animation after some time if needed
+            setTimeout(hideProcessingMessage, 60000); // Hides after 1 minute
+        }
+
+        function hideProcessingMessage() {
+            document.getElementById('loadingContainer').classList.add('hidden');
+        }
+
+        function displayFileName() {
+            const fileInput = document.getElementById('fileInput');
+            const fileNameDisplay = document.getElementById('fileNameDisplay');
+            fileNameDisplay.textContent = fileInput.files[0] ? fileInput.files[0].name : 'No file chosen';
+        }
+    </script>
+</body>
+</html>
