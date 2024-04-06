@@ -16,7 +16,7 @@ OR, you can run MusicAssist from webpage with the following command: 'poetry run
 
 This would look like the following in your terminal: 
 
-(base) YourName MusicTranscribe % 'poetry run python3 flask.py'. 
+(base) YourName MusicTranscribe % 'poetry run python3 app.py'. 
 
 Then you can go to the webpage at the given IP address and upload your file there.
 
