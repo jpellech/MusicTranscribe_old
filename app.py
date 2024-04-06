@@ -36,7 +36,7 @@ def process_file():
     subprocess.run(["poetry", "run", "python", os.path.join(directory_path, "MusicAssist.py"), file.filename])
 
     # Check if the output folder exists
-    if os.path.exists(output_folder):
+    if os.path.exists(directory_path):
         zip_filename = f"{os.path.splitext(file.filename)[0]}.zip"
         zip_filepath = os.path.join(directory_path, zip_filename)
         
