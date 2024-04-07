@@ -659,31 +659,6 @@ if __name__ == '__main__':
     #print("splitting midis using multi-threading . . . ")
     to_midi_all(splits_path + '/' + trimmed, output_path)
 
-    """
-    tf.compat.v1.disable_eager_execution()
-    if vocal:
-        print("converting vocal track to midi file . . . ")
-        vocal = splits_path+"/"+trimmed+"/vocals.wav"
-        vocal_midi = output_path
-        to_midi(vocal, vocal_midi)
-        #os.remove(vocal)
-    if bass:
-        print("converting bass track to midi file . . . ")
-        bass = splits_path+"/"+trimmed+"/bass.wav"
-        bass_midi = output_path
-        to_midi(bass, bass_midi)
-        #os.remove(bass)
-    if piano:
-        print("converting piano track to midi file . . . ")
-        piano = splits_path+"/"+trimmed+"/piano.wav"
-        piano_midi = output_path
-        to_midi(piano, piano_midi)
-    if other:
-        print("converting other track to midi file . . . ")
-        other = splits_path+"/"+trimmed+"/other.wav"
-        other_midi = output_path
-        to_midi(other, other_midi)
-    """
     #if chord_chart:
     chords_dict = chords_on_beats(2, audio_file)
     
@@ -697,5 +672,5 @@ if __name__ == '__main__':
     shutil.move(splits_path + '/' + trimmed + '/other.wav', output_path)
     shutil.move(splits_path + '/' + trimmed + '/bass.wav', output_path)
 
-    shutil.make_archive(trimmed, "zip", output_path)
+    shutil.make_archive(output_path + '/' + trimmed, "zip", output_path)
     print('all zipped up!')
