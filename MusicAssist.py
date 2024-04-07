@@ -611,20 +611,11 @@ if __name__ == '__main__':
     # Clear any previous outputs if they exist.
     with open(output_path + "/chord_chart.txt", 'w') as file:
         file.write('')
-    os.remove(output_path+"/vocals_basic_pitch.mid") if os.path.exists(output_path+"/vocals_basic_pitch.mid") else None
-    os.remove(output_path+"/bass_basic_pitch.mid") if os.path.exists(output_path+"/bass_basic_pitch.mid") else None
-    os.remove(output_path+"/piano_basic_pitch.mid") if os.path.exists(output_path+"/output/piano_basic_pitch.mid") else None
-    os.remove(output_path+"/other_basic_pitch.mid") if os.path.exists(output_path+"/other_basic_pitch.mid") else None
-    os.remove(output_path+"/vocals.wav") if os.path.exists(output_path+"/vocals.wav") else None
-    os.remove(output_path+"/bass.wav") if os.path.exists(output_path+"/bass.wav") else None
-    os.remove(output_path+"/piano.wav") if os.path.exists(output_path+"/piano.wav") else None
-    os.remove(output_path+"/other.wav") if os.path.exists(output_path+"/other.wav") else None
-    os.remove(output_path+"/drums.wav") if os.path.exists(output_path+"/drums.wav") else None
-    os.remove(splits_path+"/vocals.wav") if os.path.exists(splits_path+"/vocals.wav") else None
-    os.remove(splits_path+"/bass.wav") if os.path.exists(splits_path+"/bass.wav") else None
-    os.remove(splits_path+"/piano.wav") if os.path.exists(splits_path+"/piano.wav") else None
-    os.remove(splits_path+"/other.wav") if os.path.exists(splits_path+"/other.wav") else None
-    os.remove(splits_path+"/drums.wav") if os.path.exists(splits_path+"/drums.wav") else None
+    for file in os.listdir(output_path):
+        if file != "chord_chart.txt":
+            os.remove(os.path.join(output_path, file))
+    for file in os.listdir(splits_path):
+        os.remove(os.path.join(output_path, file))
     
     #check command arguments 
     if len(sys.argv) > 2 or len(sys.argv) == 0:
@@ -673,4 +664,4 @@ if __name__ == '__main__':
     shutil.move(splits_path + '/' + trimmed + '/bass.wav', output_path)
 
     shutil.make_archive(output_path + '/' + trimmed, "zip", output_path)
-    print('all zipped up!')
+    print(".mid's and chord_chart.txt are HOT out the oven in /MusicTranscribe/outputs/all zipped up!")
